@@ -49,13 +49,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const ul = category.querySelector('ul');
 
         button.addEventListener('click', function() {
-            const isOpen = ul.classList.contains('hidden');
-
+            const isOpen = !ul.classList.contains('hidden');
             // Close all categories
             skillCategories.forEach(c => c.querySelector('ul').classList.add('hidden'));
-
-            // Open the clicked category
-            if (isOpen) {
+            // Toggle the clicked category
+            if (!isOpen) {
                 ul.classList.remove('hidden');
             }
         });
