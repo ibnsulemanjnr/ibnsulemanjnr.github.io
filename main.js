@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-
+    
     // Smooth Scrolling for Anchor Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -39,6 +39,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         card.addEventListener('mouseleave', function() {
             card.classList.remove('hovered');
+        });
+    });
+
+    // Collapsible Skills Section
+    const skillCategories = document.querySelectorAll('.skill-category');
+    skillCategories.forEach(category => {
+        const button = category.querySelector('button');
+        const ul = category.querySelector('ul');
+
+        button.addEventListener('click', function() {
+            const isOpen = ul.classList.contains('hidden');
+
+            // Close all categories
+            skillCategories.forEach(c => c.querySelector('ul').classList.add('hidden'));
+
+            // Open the clicked category
+            if (isOpen) {
+                ul.classList.remove('hidden');
+            }
         });
     });
 });
