@@ -1,0 +1,58 @@
+/* styles/globals.css */
+@import "tailwindcss";
+
+/* Your RGB tokens (keep these if you already had them) */
+:root {
+  --background: 255 255 255;
+  --foreground: 17 24 39;
+  --muted: 243 244 246;
+  --muted-foreground: 107 114 128;
+  --border: 229 231 235;
+}
+
+.dark {
+  --background: 3 7 18;
+  --foreground: 229 231 235;
+  --muted: 17 24 39;
+  --muted-foreground: 156 163 175;
+  --border: 31 41 55;
+}
+
+/* Enable classes like bg-background, text-foreground, bg-foreground, etc. */
+@theme {
+  --color-background: rgb(var(--background));
+  --color-foreground: rgb(var(--foreground));
+  --color-muted: rgb(var(--muted));
+  --color-muted-foreground: rgb(var(--muted-foreground));
+  --color-border: rgb(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: rgb(var(--background));
+  color: rgb(var(--foreground));
+}
+
+/* Helpers used across the app */
+.container-px {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 72rem; /* = 6xl */
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.muted {
+  color: rgb(var(--muted-foreground));
+}
+
+.card {
+  border: 1px solid rgb(var(--border));
+  background: rgb(var(--background));
+  border-radius: 1rem; /* ~ rounded-2xl */
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
