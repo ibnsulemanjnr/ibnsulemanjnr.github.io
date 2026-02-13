@@ -1,5 +1,6 @@
 // app/(site)/about/page.tsx
 import Link from "next/link";
+import Image from "next/image";
 import { site } from "@/lib/site";
 
 export const metadata = {
@@ -15,20 +16,78 @@ export default function AboutPage() {
           About
         </h1>
         <p className="mt-3 muted max-w-2xl">
-          Founder of CodingForte and a secure product engineer focused on
-          backend delivery (Django), application security, and DevOps.
+          Founder of CodingForte and a secure product engineer focused on backend
+          delivery (Django), application security, and DevOps.
         </p>
       </header>
 
       <section className="grid gap-4 md:grid-cols-12">
+        {/* Profile card (photo) */}
+        <aside className="card p-6 md:col-span-4 md:p-10">
+          <div className="overflow-hidden rounded-2xl border border-[rgb(var(--border))]">
+            <Image
+              src="/profile/dp.jpeg"
+              alt="Abubakar Sadiq Suleman"
+              width={900}
+              height={900}
+              className="h-auto w-full object-cover"
+              priority
+            />
+          </div>
+
+          <div className="mt-5">
+            <p className="text-sm font-medium">{site.name}</p>
+            <p className="mt-1 text-sm muted">Founder of CodingForte • Secure Product Engineer</p>
+          </div>
+
+          <div className="mt-6 grid gap-3 text-sm">
+            <a
+              className="rounded-2xl border border-[rgb(var(--border))] p-4 muted hover:text-foreground"
+              href={site.socials.linkedin}
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn →
+            </a>
+            <a
+              className="rounded-2xl border border-[rgb(var(--border))] p-4 muted hover:text-foreground"
+              href={site.socials.github}
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub →
+            </a>
+            {site.companyUrl ? (
+              <a
+                className="rounded-2xl border border-[rgb(var(--border))] p-4 muted hover:text-foreground"
+                href={site.companyUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                IBNSULEMAN TECH LTD →
+              </a>
+            ) : null}
+          </div>
+
+          <div className="mt-8 rounded-2xl border border-[rgb(var(--border))] p-5">
+            <p className="text-sm font-medium">Current focus</p>
+            <p className="mt-2 text-sm muted">
+              CodingForte growth + iExams relaunch to modern standards (security,
+              scalability, and UX).
+            </p>
+          </div>
+        </aside>
+
+        {/* Main content */}
         <div className="card p-6 md:col-span-8 md:p-10">
           <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
             What I do
           </h2>
           <p className="mt-3 muted">
             I build and ship secure web platforms end-to-end—designing backend
-            APIs, enforcing security controls, and running production deployments.
-            I also lead teams to deliver predictable, measurable outcomes.
+            APIs, enforcing security controls, and running production
+            deployments. I also lead teams to deliver predictable, measurable
+            outcomes.
           </p>
 
           <div className="mt-8 grid gap-4 md:grid-cols-2">
@@ -51,18 +110,36 @@ export default function AboutPage() {
             <div className="rounded-2xl border border-[rgb(var(--border))] p-5">
               <p className="text-sm font-medium">DevOps & Hosting Ops</p>
               <p className="mt-2 text-sm muted">
-                Deployments, environment hardening, reliability checks, and cost-aware
-                infrastructure decisions.
+                Deployments, environment hardening, reliability checks, and
+                cost-aware infrastructure decisions.
               </p>
             </div>
 
             <div className="rounded-2xl border border-[rgb(var(--border))] p-5">
               <p className="text-sm font-medium">Automation Pipelines</p>
               <p className="mt-2 text-sm muted">
-                Python scripts that convert messy sources into structured datasets
-                (e.g., maps + social content pipelines).
+                Python scripts that convert messy sources into structured
+                datasets (e.g., maps + social content pipelines).
               </p>
             </div>
+          </div>
+
+          <div className="mt-10 rounded-2xl border border-[rgb(var(--border))] p-6">
+            <h3 className="text-lg font-semibold">How I work</h3>
+            <ul className="mt-4 list-disc space-y-2 pl-6 text-sm">
+              <li>
+                Proof-first: every project has evidence (screenshots, metrics,
+                demo).
+              </li>
+              <li>
+                Security is not an afterthought: safe defaults + review gates.
+              </li>
+              <li>
+                Ship small, ship often: predictable delivery beats big-bang
+                releases.
+              </li>
+              <li>Clear ownership: what I did, what the team did, what changed.</li>
+            </ul>
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -92,32 +169,6 @@ export default function AboutPage() {
             ) : null}
           </div>
         </div>
-
-        <aside className="card p-6 md:col-span-4 md:p-10">
-          <h3 className="text-lg font-semibold">How I work</h3>
-          <ul className="mt-4 list-disc space-y-2 pl-6 text-sm">
-            <li>
-              Proof-first: every project has evidence (screenshots, metrics, demo).
-            </li>
-            <li>
-              Security is not an afterthought: safe defaults + review gates.
-            </li>
-            <li>
-              Ship small, ship often: predictable delivery beats big-bang releases.
-            </li>
-            <li>
-              Clear ownership: what I did, what the team did, what changed.
-            </li>
-          </ul>
-
-          <div className="mt-8 rounded-2xl border border-[rgb(var(--border))] p-5">
-            <p className="text-sm font-medium">Current focus</p>
-            <p className="mt-2 text-sm muted">
-              CodingForte growth + iExams relaunch to modern standards (security,
-              scalability, and UX).
-            </p>
-          </div>
-        </aside>
       </section>
     </div>
   );

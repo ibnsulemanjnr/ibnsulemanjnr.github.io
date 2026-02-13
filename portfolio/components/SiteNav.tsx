@@ -2,8 +2,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { site } from "@/lib/site";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const nav = [
   { href: "/", label: "Home" },
@@ -18,8 +20,16 @@ export default function SiteNav() {
   return (
     <header className="sticky top-0 z-50 border-b border-[rgb(var(--border))] bg-[rgb(var(--background))]/80 backdrop-blur">
       <div className="container-px flex h-16 items-center justify-between">
-        <Link href="/" className="font-semibold tracking-tight">
-          {site.name}
+        <Link href="/" className="flex items-center gap-3 font-semibold tracking-tight">
+          <Image
+            src="/brand/Background_pics.png"
+            alt="CodingForte"
+            width={350}
+            height={150}
+            className="rounded"
+            priority
+          />
+          <span className="hidden sm:inline">{site.name}</span>
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
@@ -41,6 +51,9 @@ export default function SiteNav() {
         </nav>
 
         <div className="flex items-center gap-3">
+          {/* ✅ Dark mode toggle */}
+          <ThemeToggle />
+
           {site.companyUrl ? (
             <a
               href={site.companyUrl}

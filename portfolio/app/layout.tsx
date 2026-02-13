@@ -1,6 +1,7 @@
 // app/layout.tsx
 import type { Metadata } from "next";
 import "../styles/globals.css";
+import ThemeProvider from "@/components/ThemeProvider";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -10,27 +11,15 @@ export const metadata: Metadata = {
   },
   description: site.subheadline,
   metadataBase: new URL(site.siteUrl),
-  openGraph: {
-    title: `${site.name} — Portfolio`,
-    description: site.subheadline,
-    url: site.siteUrl,
-    siteName: site.name,
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${site.name} — Portfolio`,
-    description: site.subheadline,
-  },
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="min-h-dvh bg-background text-foreground antialiased">
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

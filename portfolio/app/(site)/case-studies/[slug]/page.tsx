@@ -6,6 +6,14 @@ import type { Metadata } from "next";
 import Mdx from "@/components/mdx/Mdx";
 import { getAllCaseStudies, getCaseStudyBySlug } from "@/lib/caseStudies";
 
+type MaybePromise<T> = T | Promise<T>;
+
+async function unwrapParams(
+  params: MaybePromise<{ slug: string }>
+): Promise<{ slug: string }> {
+  return await Promise.resolve(params);
+}
+
 export async function generateStaticParams() {
   const all = getAllCaseStudies();
   return all.map((cs) => ({ slug: cs.slug }));
@@ -14,10 +22,11 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: MaybePromise<{ slug: string }>;
 }): Promise<Metadata> {
   try {
-    const { frontmatter } = getCaseStudyBySlug(params.slug);
+    const { slug } = await unwrapParams(params);
+    const { frontmatter } = getCaseStudyBySlug(slug);
 
     const ogUrl = `/og?title=${encodeURIComponent(
       frontmatter.product
@@ -31,7 +40,12 @@ export async function generateMetadata({
         description: frontmatter.title,
         type: "article",
         images: [
-          { url: ogUrl, width: 1200, height: 630, alt: `${frontmatter.product} OG` },
+          {
+            url: ogUrl,
+            width: 1200,
+            height: 630,
+            alt: `${frontmatter.product} OG`,
+          },
         ],
       },
       twitter: {
@@ -46,14 +60,16 @@ export async function generateMetadata({
   }
 }
 
-export default function CaseStudyDetailPage({
+export default async function CaseStudyDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: MaybePromise<{ slug: string }>;
 }) {
+  const { slug } = await unwrapParams(params);
+
   let data;
   try {
-    data = getCaseStudyBySlug(params.slug);
+    data = getCaseStudyBySlug(slug);
   } catch {
     notFound();
   }
@@ -173,7 +189,10 @@ export default function CaseStudyDetailPage({
         {frontmatter.metrics?.length ? (
           <div className="mt-8 grid gap-3 border-t border-[rgb(var(--border))] pt-6 md:grid-cols-3">
             {frontmatter.metrics.map((m) => (
-              <div key={`${m.label}-${m.value}`} className="rounded-2xl border border-[rgb(var(--border))] p-4">
+              <div
+                key={`${m.label}-${m.value}`}
+                className="rounded-2xl border border-[rgb(var(--border))] p-4"
+              >
                 <p className="text-xs muted">{m.label}</p>
                 <p className="mt-1 text-sm font-medium">{m.value}</p>
               </div>

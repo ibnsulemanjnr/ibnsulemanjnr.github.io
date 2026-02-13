@@ -59,9 +59,9 @@ export default function HomePage() {
             <VideoEmbed url={site.demoVideoUrl} />
           ) : (
             <div className="rounded-2xl border border-dashed border-[rgb(var(--border))] p-6 muted">
-              Add a YouTube/Loom link via{" "}
+              Coming{" "}
               <code className="rounded bg-[rgb(var(--muted))] px-2 py-1 text-xs">
-                NEXT_PUBLIC_DEMO_VIDEO_URL
+                Soon
               </code>
               .
             </div>

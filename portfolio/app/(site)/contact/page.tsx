@@ -28,10 +28,7 @@ export default function ContactPage() {
           <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
             Send a message
           </h2>
-          <p className="mt-3 muted text-sm">
-            This form submits via Formspree for now. You can replace it later with
-            your own API route + email provider.
-          </p>
+        
 
           <form
             action={FORMSPREE_ENDPOINT}
