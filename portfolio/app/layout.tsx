@@ -11,6 +11,29 @@ export const metadata: Metadata = {
   },
   description: site.subheadline,
   metadataBase: new URL(site.siteUrl),
+
+  openGraph: {
+    title: `${site.name} — Portfolio`,
+    description: site.subheadline,
+    url: site.siteUrl,
+    siteName: site.name,
+    type: "website",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Portfolio OpenGraph image",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} — Portfolio`,
+    description: site.subheadline,
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({

@@ -28,9 +28,8 @@ export async function generateMetadata({
     const { slug } = await unwrapParams(params);
     const { frontmatter } = getCaseStudyBySlug(slug);
 
-    const ogUrl = `/og?title=${encodeURIComponent(
-      frontmatter.product
-    )}&subtitle=${encodeURIComponent(frontmatter.title)}`;
+    // ✅ Static-export friendly: use cover image if available, else fallback to /og.png
+    const ogImage = frontmatter.cover?.image ?? "/og.png";
 
     return {
       title: frontmatter.product,
@@ -41,7 +40,7 @@ export async function generateMetadata({
         type: "article",
         images: [
           {
-            url: ogUrl,
+            url: ogImage,
             width: 1200,
             height: 630,
             alt: `${frontmatter.product} OG`,
@@ -52,7 +51,7 @@ export async function generateMetadata({
         card: "summary_large_image",
         title: frontmatter.product,
         description: frontmatter.title,
-        images: [ogUrl],
+        images: [ogImage],
       },
     };
   } catch {

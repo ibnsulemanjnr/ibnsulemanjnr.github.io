@@ -1,4 +1,7 @@
 // app/robots.ts
+export const dynamic = "force-static";
+export const revalidate = false;
+
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 
