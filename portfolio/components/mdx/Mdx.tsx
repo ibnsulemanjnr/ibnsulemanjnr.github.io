@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Gallery from "@/components/Gallery";
+import VideoEmbed from "@/components/VideoEmbed";
 
 const mdxComponents = {
   a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
@@ -50,8 +51,8 @@ const mdxComponents = {
     // If the image is external, we keep it as <img> (no Next config required)
     const isExternal = src.startsWith("http://") || src.startsWith("https://");
     if (isExternal) {
-      // eslint-disable-next-line @next/next/no-img-element
       return (
+        // eslint-disable-next-line @next/next/no-img-element
         <img
           {...props}
           className={[
@@ -133,8 +134,9 @@ const mdxComponents = {
 
   hr: () => <hr className="my-10 border-[rgb(var(--border))]" />,
 
-  // ✅ Register custom MDX component
+  // Custom MDX components
   Gallery,
+  VideoEmbed,
 };
 
 export default function Mdx({ source }: { source: string }) {

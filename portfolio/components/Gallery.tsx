@@ -23,14 +23,15 @@ export default function Gallery({
           key={it.src}
           className="overflow-hidden rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--background))]"
         >
-          <Image
-            src={it.src}
-            alt={it.alt}
-            width={1400}
-            height={900}
-            className="h-auto w-full object-cover"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
+          <div className="relative aspect-[16/10] w-full">
+            <Image
+              src={it.src}
+              alt={it.alt}
+              fill
+              className="object-contain"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
           <figcaption className="p-3 text-xs muted">{it.alt}</figcaption>
         </figure>
       ))}

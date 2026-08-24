@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio
 
-## Getting Started
+Personal portfolio site for Abubakar Sadiq Suleman, Founder/CEO of [IBNSULEMAN TECH LTD](https://www.ibnsulemantech.com). Built with Next.js (App Router), Tailwind CSS v4, and MDX-based case studies, statically exported and deployed to GitHub Pages.
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** (App Router, static export — `output: "export"` in `next.config.mjs`)
+- **React 19**, **TypeScript**, **Tailwind CSS v4**
+- **MDX** case studies (`next-mdx-remote`) with Zod-validated frontmatter (`lib/caseStudies.ts`)
+- **next-themes** for light/dark mode
+
+Because the site is a static export for GitHub Pages, there is no Next.js server: no API routes, no on-demand image optimization (`images.unoptimized: true`), no ISR.
+
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev          # start dev server at http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build          # static export -> out/
+npm run start           # serve the last production build (Next server, not used for deploy)
+npm run lint             # eslint
+npm run typecheck  # tsc --noEmit
+npm run format          # prettier --write .
+npm run format:check # prettier --check .
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment variables
 
-## Learn More
+Copy `.env.local` and set as needed:
 
-To learn more about Next.js, take a look at the following resources:
+- `NEXT_PUBLIC_SITE_URL` — canonical site URL, used for metadata/sitemap
+- `NEXT_PUBLIC_COMPANY_URL` — link to https://www.ibnsulemantech.com
+- `NEXT_PUBLIC_DEMO_VIDEO_URL` — YouTube/Loom URL for the homepage demo embed (optional)
+- `NEXT_PUBLIC_FORMSPREE_ENDPOINT` — Formspree form endpoint for the contact page
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Content
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Case studies live as MDX files in `content/case-studies/*.mdx` with frontmatter validated against a Zod schema in `lib/caseStudies.ts`. Add a new case study by dropping in a new `.mdx` file with the required frontmatter fields.
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`.github/workflows/deploy.yml` builds and deploys `out/` to GitHub Pages on every push to `main` (lint + typecheck run first; a failing build no longer deploys silently).

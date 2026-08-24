@@ -7,6 +7,11 @@ import VideoEmbed from "@/components/VideoEmbed";
 import { getAllCaseStudies } from "@/lib/caseStudies";
 import { site } from "@/lib/site";
 
+export const metadata = {
+  title: `${site.name} — Portfolio`,
+  description: site.subheadline,
+};
+
 export default function HomePage() {
   const all = getAllCaseStudies();
 
@@ -50,8 +55,7 @@ export default function HomePage() {
               2-Minute Demo
             </h2>
             <p className="mt-2 muted">
-              Quick walkthrough of CodingForte, iExams relaunch, and automation
-              work.
+              Quick walkthrough of CodingForte, iExam, and automation work.
             </p>
           </div>
 

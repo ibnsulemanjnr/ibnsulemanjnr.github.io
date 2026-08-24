@@ -1,67 +1,59 @@
 ---
-title: "Secure Online Exam Platform — Relaunch Build (60% complete)"
+title: "Secure School Examination Platform with AI Tutoring and Offline Support"
 slug: "iexams"
-product: "iExams"
+product: "iExam"
 role: "Founder/Builder • Backend + Security + Modernization"
-timeline: "In progress (Relaunch)"
+timeline: "2024–Present"
+featured: true
 stack: ["Django", "React", "PostgreSQL", "Redis", "Docker"]
-tags: ["EdTech", "Exam Engine", "Security", "Rebuild", "In Progress"]
+tags: ["EdTech", "Exam Engine", "AI Tutor", "Offline-First", "Security"]
 links:
   live: ""
   demo_video: ""
   github: "private"
-cover:
-  image: "/case-studies/iexams/iexams_01_student_view.png"
-  alt: "iExams student interface screenshot"
 metrics:
-  - label: "Completion"
-    value: "60%"
-  - label: "Repo"
-    value: "Private"
-  - label: "Goal"
-    value: "Modern standards relaunch"
+  - label: "Admin Accounts"
+    value: "37"
+  - label: "Course Mappings"
+    value: "75+"
+  - label: "Pricing"
+    value: "Free (admins) / ₦2,000/year (students)"
 ---
 
 ## Overview
-iExams is an online exam platform under **IBNSULEMAN TECH LTD**. After an initial trial launch, I paused public rollout to upgrade the system to **modern security, scalability, and UX standards**. The relaunch build is currently **~60% complete**.
+iExam is a school examination management system under **IBNSULEMAN TECH LTD**, built for JAMB/WAEC/NECO exam preparation. It ships an AI tutor and offline capability so students can keep working without a stable connection, and is currently live across 37 admin accounts with 75+ course mappings.
 
-## Why we paused after trial launch
-Trial launch validated the idea, but production relaunch needs:
-- stronger security guarantees around exam integrity and user access
-- more robust architecture for scale and reliability
-- upgraded UI/UX to current expectations
+## Problem
+Exam prep in this market needs to work under real constraints:
+- unreliable connectivity in many schools, so exam access can't depend on being online
+- exam integrity and access control across students, admins, and institutions
+- content coverage broad enough to matter for JAMB/WAEC/NECO, without becoming unmaintainable
 
-## What’s being rebuilt / improved
-### Platform modernization
-- improved flows for students and admins
-- clearer structure for exam creation, scheduling, and result handling
-- readiness for production-quality rollout
+## What I Built
+### Offline-first exam engine
+- exam delivery designed to keep working without a live connection
+- sync behavior that reconciles state once connectivity returns
+
+### AI tutor
+- integrated tutoring support layered on top of the exam content
+- built to help students beyond just taking practice exams
 
 ### Security-first design
-- stronger access boundaries between roles
-- safer handling of sensitive exam content
+- stronger access boundaries between student, admin, and institutional roles
+- safe handling of exam content and results
 - reduced risk of common web vulnerabilities (secure defaults)
 
-### Scalability and reliability
-- architecture choices that support growth
-- operational readiness (deployability, configuration hygiene)
-
-## Evidence / Screenshots
-
-
-## Roadmap (Relaunch plan)
-- Finish core exam workflows (create → sit → submit → grade → report)
-- Add security hardening pass (roles, access checks, safe content handling)
-- Improve UI polish + performance
-- Production deployment + monitoring
+### Backend & operations (Django/DRF, PostgreSQL, Redis, Docker)
+- data modeling for courses, exams, and results across institutions
+- production deployment and hosting maintenance
 
 ## My Role
 As founder/builder, I drive:
-- modernization decisions
-- security posture direction and implementation
-- backend and system delivery toward relaunch readiness
+- product direction and modernization decisions
+- security posture and access-control implementation
+- backend and system delivery, from architecture to production
 
-## What’s Next
-Once screenshots + milestone proof are finalized, I’ll publish:
-- a public demo video walkthrough (Loom/YouTube)
-- a relaunch timeline and evidence pack
+## What's Next
+- grow admin/school adoption beyond the current 37 accounts
+- expand course/exam-board coverage
+- publish a public demo video walkthrough

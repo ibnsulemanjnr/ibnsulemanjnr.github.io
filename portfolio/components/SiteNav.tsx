@@ -23,9 +23,9 @@ export default function SiteNav() {
         <Link href="/" className="flex items-center gap-3 font-semibold tracking-tight">
           <Image
             src="/brand/Background_pics.png"
-            alt="CodingForte"
-            width={350}
-            height={150}
+            alt={site.name}
+            width={45}
+            height={30}
             className="rounded"
             priority
           />
@@ -40,8 +40,10 @@ export default function SiteNav() {
                 key={item.href}
                 href={item.href}
                 className={[
-                  "text-sm transition-colors",
-                  active ? "text-foreground" : "muted hover:text-foreground",
+                  "text-sm transition-colors border-b-2 pb-0.5",
+                  active
+                    ? "border-accent text-foreground"
+                    : "border-transparent muted hover:text-foreground",
                 ].join(" ")}
               >
                 {item.label}

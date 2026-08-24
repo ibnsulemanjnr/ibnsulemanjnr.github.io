@@ -1,7 +1,7 @@
 // components/HeroToggle.tsx
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useLayoutEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { site } from "@/lib/site";
 
@@ -12,8 +12,13 @@ const STORAGE_KEY = "portfolio_mode_v1";
 export default function HeroToggle() {
   const [mode, setMode] = useState<Mode>("founder");
 
-  useEffect(() => {
+  // Runs synchronously before paint, so switching to a saved "engineer"
+  // preference never flashes the "founder" copy first.
+  useLayoutEffect(() => {
     const saved = window.localStorage.getItem(STORAGE_KEY) as Mode | null;
+    // localStorage isn't available during SSR/build, so the saved mode can
+    // only be read here — before paint, to avoid a visible flash.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (saved === "founder" || saved === "engineer") setMode(saved);
   }, []);
 

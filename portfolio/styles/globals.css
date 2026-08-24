@@ -1,13 +1,19 @@
 /* styles/globals.css */
 @import "tailwindcss";
 
-/* Your RGB tokens (keep these if you already had them) */
 :root {
   --background: 255 255 255;
   --foreground: 17 24 39;
   --muted: 243 244 246;
   --muted-foreground: 107 114 128;
   --border: 229 231 235;
+  --accent: 37 99 235; /* blue-600 */
+  --accent-foreground: 255 255 255;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.05);
 }
 
 .dark {
@@ -16,15 +22,23 @@
   --muted: 17 24 39;
   --muted-foreground: 156 163 175;
   --border: 31 41 55;
+  --accent: 96 165 250; /* blue-400 */
+  --accent-foreground: 3 7 18;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4);
 }
 
-/* Enable classes like bg-background, text-foreground, bg-foreground, etc. */
+/* Enable classes like bg-background, text-foreground, bg-accent, font-sans, etc. */
 @theme {
   --color-background: rgb(var(--background));
   --color-foreground: rgb(var(--foreground));
   --color-muted: rgb(var(--muted));
   --color-muted-foreground: rgb(var(--muted-foreground));
   --color-border: rgb(var(--border));
+  --color-accent: rgb(var(--accent));
+  --color-accent-foreground: rgb(var(--accent-foreground));
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
 html {
@@ -34,6 +48,27 @@ html {
 body {
   background: rgb(var(--background));
   color: rgb(var(--foreground));
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: rgb(var(--accent) / 0.25);
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Helpers used across the app */
@@ -53,6 +88,6 @@ body {
 .card {
   border: 1px solid rgb(var(--border));
   background: rgb(var(--background));
-  border-radius: 1rem; /* ~ rounded-2xl */
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
 }

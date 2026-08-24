@@ -16,8 +16,9 @@ export default function AboutPage() {
           About
         </h1>
         <p className="mt-3 muted max-w-2xl">
-          Founder of CodingForte and a secure product engineer focused on backend
-          delivery (Django), application security, and DevOps.
+          Founder/CEO of IBNSULEMAN TECH LTD and a secure product engineer
+          focused on backend delivery (Django), application security, and
+          DevOps.
         </p>
       </header>
 
@@ -37,7 +38,7 @@ export default function AboutPage() {
 
           <div className="mt-5">
             <p className="text-sm font-medium">{site.name}</p>
-            <p className="mt-1 text-sm muted">Founder of CodingForte • Secure Product Engineer</p>
+            <p className="mt-1 text-sm muted">Founder/CEO, IBNSULEMAN TECH LTD • Secure Product Engineer</p>
           </div>
 
           <div className="mt-6 grid gap-3 text-sm">
@@ -72,8 +73,8 @@ export default function AboutPage() {
           <div className="mt-8 rounded-2xl border border-[rgb(var(--border))] p-5">
             <p className="text-sm font-medium">Current focus</p>
             <p className="mt-2 text-sm muted">
-              CodingForte growth + iExams relaunch to modern standards (security,
-              scalability, and UX).
+              Growing CodingForte and iExam, and building Gaskiya—a civic
+              accountability platform launching Q4 2026.
             </p>
           </div>
         </aside>

@@ -11,14 +11,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes = ["/", "/case-studies", "/about", "/contact"].map((p) => ({
     url: `${base}${p}`,
-    lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: p === "/" ? 1 : 0.8,
   }));
 
   const caseStudies = getAllCaseStudies().map((cs) => ({
     url: `${base}/case-studies/${cs.slug}`,
-    lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));

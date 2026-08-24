@@ -1,11 +1,12 @@
 // lib/site.ts
 export const site = {
   name: "Abubakar Sadiq Suleman",
-  headline: "Founder of CodingForte • Secure Product Engineer",
+  headline: "Founder/CEO, IBNSULEMAN TECH LTD • Secure Product Engineer",
   subheadline:
-    "I build and ship secure web platforms end-to-end—backend (Django), application security, and DevOps—turning ideas into reliable products.",
+    "I build and ship secure software end-to-end—backend (Django), application security, and DevOps—for products like CodingForte and iExam, turning ideas into reliable, revenue-generating platforms.",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  companyUrl: process.env.NEXT_PUBLIC_COMPANY_URL ?? "",
+  companyUrl:
+    process.env.NEXT_PUBLIC_COMPANY_URL ?? "https://www.ibnsulemantech.com",
 
   socials: {
     github: "https://github.com/ibnsulemanjnr",
